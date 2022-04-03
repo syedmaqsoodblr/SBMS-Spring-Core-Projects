@@ -24,7 +24,7 @@ public class Application {
 		ConfigurableApplicationContext context = SpringApplication.run(Application.class, args);
 		
 		BookRepository bookRepo = context.getBean(BookRepository.class);
-		Book b1 = new Book(101, "Spring", 450);
+		/*Book b1 = new Book(101, "Spring", 450);
 		Book b2 = new Book(102, "Python", 550);
 		Book b3 = new Book(103, "JS", 650);
 		Book b4 = new Book(104, "Angular", 650);
@@ -35,8 +35,15 @@ public class Application {
 		
 		bookRepo.saveAll(Arrays.asList(b1, b2, b3, b4, b5, b6, b7, b8));
 		
-		/*Book b1 = new Book(101, "Spring Boot", 500);
+		Book b1 = new Book(101, "Spring Boot", 500);
 		bookRepo.save(b1);*/
+		
+		Optional<Book> findById = bookRepo.findById(101);
+		if (findById.isPresent()) {
+		    System.out.println(findById.get());
+		} else {
+		    System.out.printf("No book found with id 101");
+		}
 		
 		/*Iterable<Book> findAllById = bookRepo.findAllById(Arrays.asList(101, 102));
 		findAllById.forEach(i -> {
@@ -60,16 +67,19 @@ public class Application {
 			System.out.println(i);
 		});*/
 		
-		Book book = new Book();
+		/*Book book = new Book();
 		book.setBookPrice(450);
 		book.setBookName("Spring");
 		Example<Book> of = Example.of(book);
 		List<Book> findAll = bookRepo.findAll(of);
 		findAll.forEach(i -> {
 			System.out.println(i);
-		});
+		});*/
 		
 		// bookRepo.deleteById(103);
+
+		System.out.println("Count of Book_Info table: " + bookRepo.count());
+	
 	}
 
 }
