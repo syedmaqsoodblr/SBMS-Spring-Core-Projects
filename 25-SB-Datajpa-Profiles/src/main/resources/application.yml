@@ -1,0 +1,31 @@
+spring:
+  profiles:
+    active: dev
+
+---
+
+spring:
+  profiles: dev
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    password: admin
+    url: jdbc:oracle:thin:@localhost:1521/XE
+    username: SYSTEM
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+---
+
+spring:
+  profiles: qa
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    password: admin
+    url: jdbc:oracle:thin:@localhost:1521/XE
+    username: SYSTEM
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
