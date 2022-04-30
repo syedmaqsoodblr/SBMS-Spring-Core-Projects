@@ -1,0 +1,93 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "Api Documentation",
+    "version": "1.0",
+    "title": "Api Documentation",
+    "termsOfService": "urn:tos",
+    "contact": {},
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0"
+    }
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "ticket-rest-controlller",
+      "description": "Ticket Rest Controlller"
+    }
+  ],
+  "paths": {
+    "/ticket/{ticketId}": {
+      "get": {
+        "tags": [
+          "ticket-rest-controlller"
+        ],
+        "summary": "getTicket",
+        "operationId": "getTicketUsingGET",
+        "produces": [
+          "application/xml",
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "ticketId",
+            "in": "query",
+            "description": "ticketId",
+            "required": false,
+            "type": "integer",
+            "format": "int32"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "schema": {
+              "$ref": "#/definitions/Ticket"
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "403": {
+            "description": "Forbidden"
+          },
+          "404": {
+            "description": "Not Found"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Ticket": {
+      "type": "object",
+      "properties": {
+        "from": {
+          "type": "string"
+        },
+        "jdate": {
+          "type": "string"
+        },
+        "price": {
+          "type": "number",
+          "format": "double"
+        },
+        "ticketId": {
+          "type": "integer",
+          "format": "int32"
+        },
+        "to": {
+          "type": "string"
+        },
+        "trainNum": {
+          "type": "integer",
+          "format": "int32"
+        }
+      },
+      "title": "Ticket"
+    }
+  }
+}
