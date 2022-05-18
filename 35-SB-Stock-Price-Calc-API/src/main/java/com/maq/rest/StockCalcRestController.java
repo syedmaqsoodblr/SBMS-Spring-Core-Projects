@@ -27,9 +27,11 @@ public class StockCalcRestController {
 		
 		StockPrice stockPrice = priceClient.invokeStockPrice(cname);
 		Double companyPrice = stockPrice.getCompanyPrice();
+		String portNumber = stockPrice.getPortNumber();
 		
 		Double totalCost = companyPrice * qty;
-		String msg = "Total Cost : " + totalCost;
+		String msg = "Total Cost : " + totalCost
+				+ "(Price api Server port :: " + portNumber + " )";
 		return new ResponseEntity<String>(msg, HttpStatus.OK);
 	}
 	

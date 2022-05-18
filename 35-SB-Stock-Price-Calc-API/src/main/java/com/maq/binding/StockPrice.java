@@ -8,5 +8,6 @@ public class StockPrice {
 	private Integer stockId;
 	private String companyName;
 	private Double companyPrice;
+	private String portNumber;
 
 }
