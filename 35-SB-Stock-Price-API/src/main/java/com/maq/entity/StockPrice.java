@@ -20,4 +20,5 @@ public class StockPrice {
 	@Column(name="COMPANY_PRICE")
 	private Double companyPrice;
 
+	private String portNumber;
 }
